@@ -1,0 +1,31 @@
+{
+  "name": "info",
+  "version": "1.0.0",
+  "description": "Телеграмм бот в чат тендерного отдела ДНС",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apofeouz/info.git"
+  },
+  "author": "apofeouz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apofeouz/info/issues"
+  },
+  "homepage": "https://github.com/apofeouz/info#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "friendly-node-cron": "^1.4.1",
+    "node-cron": "^3.0.0",
+    "node-fetch": "^2.6.7",
+    "nodemon": "^2.0.15",
+    "random-img-lib": "^1.0.3",
+    "telegraf": "^4.7.0",
+    "type": "^2.6.0"
+  }
+}
