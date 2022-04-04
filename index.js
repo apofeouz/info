@@ -16,11 +16,11 @@ bot.hears('Привет', async ctx => {
 
   //Доброе утро
   cron.schedule(translate('at 09:00:00'), () => {
-    bot.telegram.sendMessage(chat_id, 'Доброго утро и удачного дня команда!')
+    bot.telegram.sendMessage(chat_id, 'Добрый день и удачного дня команда!')
   })
   //Конец дня
   cron.schedule(translate('at 18:00:00'), () => {
-    bot.telegram.sendMessage(chat_id, 'Закончен день! Не забудь завершить работу в Битрикс!')
+    bot.telegram.sendMessage(chat_id, 'День окончен! Не забудь завершить работу в Битрикс!')
   })
 
 //ФОТО команда
@@ -38,18 +38,21 @@ bot.hears('Фото',  ctx => {
  fetch('https://www.cbr-xml-daily.ru/daily_json.js')
   .then(res => res.json())
   .then(json => {
-      bot.telegram.sendMessage(chat_id, '$ бакс сейчас стоит ' + json.Valute.USD.Value.toFixed(2) + ' и он ' + (json.Valute.USD.Value < json.Valute.USD.Previous ? ' падает' : ' растёт'))
+    let date = json.Date.slice(0, 10);
+    ctx.reply(`По данным ЦБР на ${date}, курс USD установлен ${json.Valute.USD.Value.toFixed(2)} и он ${json.Valute.USD.Value < json.Valute.USD.Previous ? ' падает' : ' растёт'}`);
 })
   });
 
 //Курс Команда
 bot.hears('Курс',  ctx => {
   fetch('https://www.cbr-xml-daily.ru/daily_json.js')
-.then(res => res.json())
-.then(json => {
-   ctx.reply(`$ бакс сейчас стоит,  ${json.Valute.USD.Value.toFixed(2)} и он ${json.Valute.USD.Value < json.Valute.USD.Previous ? ' падает' : ' растёт'}`);
-});
-}) 
+  .then(res => res.json())
+  .then(json => {
+    let date = json.Date.slice(0, 10);
+    ctx.reply(`По данным ЦБР на ${date}, курс USD установлен ${json.Valute.USD.Value.toFixed(2)} и он ${json.Valute.USD.Value < json.Valute.USD.Previous ? ' падает' : ' растёт'}`);
+  });
+  })
+  
 
 
 //Погода
